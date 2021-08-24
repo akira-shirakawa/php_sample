@@ -17,20 +17,21 @@ $content = show($id);
 </head>
 <body>
     <div class="header">
-        <span class="css-big">Navbar</span><span class="css-big">詳細</span>
+         <span class="css-big">Navbar</span><span class="css-big">編集</span>
     </div>
    <div class="columns">
        <div class="column"></div>
        <div class="column">
         <div class="box">
-
-                <?php echo h($content['content']) ?>
-                <?php echo h($content['created_at']) ?>
-                <form action="delete.php" method="post">
-
-                <input type="hidden" value="<?php echo $content['id'] ?> "name="delete">
-                <input type="submit" value="消去" class="button is-danger">
-                </form>
+        <form action ="edit.php" method="post">
+            <p>タイトル</p>
+            <input type="text" name="title" class="input is-link" value="<?php echo $content['title'] ?>"required>
+            <p>内容</p>
+            <textarea type="text" name="content" rows="10" class="textarea" required><?php echo $content['content'] ?></textarea>
+            <input type="hidden" value="<?php echo $content['id'] ?>" name="id">
+            <input type="submit" value="送信" class="button is-fullwidth is-dark">
+        </form>
+           
                 <a href="index.php">戻る</a>
         </div>
        </div>

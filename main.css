@@ -1,0 +1,42 @@
+html{
+    box-sizing: border-box;
+}
+.header{
+    
+    background-color: rgb(148, 221, 255);
+}
+.right{
+    text-align:right;   
+    height: 100px;
+}
+.js-target{
+    display: inline-block;
+    margin-top:30px;
+}
+span{
+    font-size:large;
+    font-size:1.8rem;
+    display: inline-block;
+    margin-left:50px;
+    padding-top:20px;
+    padding-bottom:50px;
+}
+.header>.css-big{
+    
+    font-weight: bold;
+}
+.wrapper{
+    display:flex;
+    width:100%;
+}
+
+.item>form{
+    display:inline-block;
+    width:10%;
+}
+.item-first{
+    width:70%;
+}
+.item-second{
+    width:30%;
+}

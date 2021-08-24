@@ -11,33 +11,73 @@ $content = get_message();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" defer ></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+    <link rel="stylesheet" href="main.css">
+    
+   
+
     <title>Document</title>
 </head>
 <body>
+    <div class="header">
+    <span class="css-big">Navbar</span><span class="css-big">一覧</span><span class="js-target">新規追加</span>
+    </div>
     <div class="columns">
         <div class="column"></div>
-        <div class="column">
-        <form action ="create.php" method="post">
-                <p>タイトル</p>
-                <input type="text" name="title" class="input is-link" required>
-                <p>内容</p>
-                <input type="text" name="content" rows="10" class="textarea" required>
-                <input type="submit" value="送信" class="button">
-                </form>
-            
-                
-                <?php foreach($content as $data) : ?>
-                <div class="box">
-                        <?php echo h($data['title']) ?>
-                        <a href="show.php?id=<?php echo $data['id']?>" class="button is-primary">詳細</a>
+        <div class="column is-half">
+        <div class="right">
+            <button class=" button is-success js-target is-medium" >新規追加</button>
+        </div>
+        
+            <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <!-- Any other Bulma elements you want -->
+                    <div class="box">
+                        <form action ="create.php" method="post">
+                            <p>タイトル</p>
+                            <input type="text" name="title" class="input is-link" required>
+                            <p>内容</p>
+                            <textarea type="text" name="content" rows="10" class="textarea" required></textarea>
+                            <input type="submit" value="送信" class="button is-fullwidth is-dark">
+                        </form>
+                    </div>
                 </div>
-                
+                <button class="modal-close is-large" aria-label="close"></button>
+            </div> 
+                  
+  
+            <div class="panel">
+                <p class="panel-heading">タイトル</p>
+                <?php foreach($content as $data) : ?>
+                <div class="panel-block">
+                    <div class="wrapper">
+                        <div class="item item-first">
+                             <?php echo h($data['title']) ?>
+                        </div>
+                        <div class="item item-second">
+                            <a href="show.php?id=<?php echo $data['id']?>" class="button is-primary">詳細</a>
+                            <a href="edit_form.php?id=<?php echo $data['id']?>" class="button is-link">編集</a> 
+                            <form action="delete.php" method="post">
+                            <input type="hidden" value="<?php echo $data['id'] ?> "name="delete">
+                            <input type="submit" value="消去" class="button is-danger">
+                            </form> 
+                        </div>
+                    </div>           
+                    
+                    
+                    
+                </div>
                 <?php endforeach ;?>
-           
+            </div>
+                    
+      
+            
           
         </div>
-        <div class="column"></div>
+        <div class="column">
+        </div>
     </div>
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
