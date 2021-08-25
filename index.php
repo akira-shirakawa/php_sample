@@ -38,7 +38,7 @@ $content = get_message();
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <!-- Any other Bulma elements you want -->
-                    <div class="box " style="margin-top:50px">
+                    <div class="box " style="margin-top: 30%">
                         <form action ="create.php" method="post">
                             <p>タイトル</p>
                             <input type="text" name="title" class="input is-link" required>
