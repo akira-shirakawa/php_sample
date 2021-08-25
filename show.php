@@ -16,9 +16,12 @@ $content = show($id);
     <title>Document</title>
 </head>
 <body>
-    <div class="header">
-        <span class="css-big">Navbar</span><span class="css-big">詳細</span>
-    </div>
+    <nav class="navbar is-primary is-midium" role="navigation" aria-label="main navigation">
+        <div class="navbar-item　has-text-white">
+           詳細
+        
+        </div>
+    </nav>
    <div class="columns">
        <div class="column"></div>
        <div class="column">

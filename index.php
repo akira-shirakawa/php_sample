@@ -18,9 +18,15 @@ $content = get_message();
     <title>Document</title>
 </head>
 <body>
-    <div class="header">
-    <span class="css-big">Navbar</span><span class="css-big">一覧</span><span class="js-target">新規追加</span>
-    </div>
+    <nav class="navbar is-primary " role="navigation" aria-label="main navigation">
+        <div class="navbar-item has-text-white">
+            一覧画面
+        </div>
+        <a class="navbar-item has-text-white">
+           <span class="js-target"> 新規追加</span>
+        </a>
+       
+    </nav>
     <div class="columns">
         <div class="column"></div>
         <div class="column is-half">
@@ -32,7 +38,7 @@ $content = get_message();
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <!-- Any other Bulma elements you want -->
-                    <div class="box">
+                    <div class="box " style="margin-top:50px">
                         <form action ="create.php" method="post">
                             <p>タイトル</p>
                             <input type="text" name="title" class="input is-link" required>
