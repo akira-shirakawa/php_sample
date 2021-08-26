@@ -2,7 +2,8 @@
 ini_set('display_errors', 1);
 require_once('dbc.php');
 $id = $_GET['id'];
-$content = show($id);
+$dbc = new DB();
+$content = $dbc->show($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,17 +26,18 @@ $content = show($id);
    <div class="columns">
        <div class="column"></div>
        <div class="column">
-        <div class="box">
-
-                <?php echo h($content['content']) ?>
-                <?php echo h($content['created_at']) ?>
-                <form action="delete.php" method="post">
-
-                <input type="hidden" value="<?php echo $content['id'] ?> "name="delete">
-                <input type="submit" value="消去" class="button is-danger">
-                </form>
-                <a href="index.php">戻る</a>
-        </div>
+            <article class="message is-dark" id="mt-target">
+                <div class="message-header">
+                    <p> <?php echo Db::h($content['title']) ?></p>
+                    
+                </div>
+                <div class="message-body">
+                <?php echo Db::h($content['content']) ?>
+                </div>
+                作成日:<?php echo Db::h($content['created_at']) ?>
+                <a href="index.php" class="button">戻る</a>
+            </article>
+       
        </div>
        <div class="column"></div>
    </div>

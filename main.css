@@ -31,3 +31,12 @@ html{
 .item-second{
     width:30%;
 }
+.item > form{
+    display:none;
+}
+.js-del-target{
+    display:none;
+}
+#mt-target{
+    margin-top:20%;
+}

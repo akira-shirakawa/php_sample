@@ -1,7 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 require_once('dbc.php');
-$content = get_message();
+$dbc = new Db();
+$content = $dbc->get_message();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,15 +31,19 @@ $content = get_message();
     <div class="columns">
         <div class="column"></div>
         <div class="column is-half">
-        <div class="right">
-            <button class=" button is-success js-target is-medium" >新規追加</button>
-        </div>
-        
+            <div class="notification is-danger js-del-target">
+                本当に消去しますか？　<button class="button yes">はい</button><button class="button no">いいえ</button>
+            </div>
+            <is-danger></is-danger>
+            <div class="right">
+                <button class=" button is-success js-target is-medium" >新規追加</button>
+            </div>
+          
             <div class="modal">
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <!-- Any other Bulma elements you want -->
-                    <div class="box " style="margin-top: 30%">
+                    <div class="box " id="mt-target">
                         <form action ="create.php" method="post">
                             <p>タイトル</p>
                             <input type="text" name="title" class="input is-link" required>
@@ -58,27 +63,21 @@ $content = get_message();
                 <div class="panel-block">
                     <div class="wrapper">
                         <div class="item item-first">
-                             <?php echo h($data['title']) ?>
+                             <?php echo Db::h($data['title']) ?>
                         </div>
                         <div class="item item-second">
                             <a href="show.php?id=<?php echo $data['id']?>" class="button is-primary">詳細</a>
                             <a href="edit_form.php?id=<?php echo $data['id']?>" class="button is-link">編集</a> 
-                            <form action="delete.php" method="post">
+                            <button id="<?php echo $data['id'] ?>" class="button is-danger del"><i class="fas fa-trash-alt"></i></button>
+                            <form action="delete.php" method="post" class="form<?php echo $data['id'] ?>">
                             <input type="hidden" value="<?php echo $data['id'] ?> "name="delete">
                             <input type="submit" value="消去" class="button is-danger">
                             </form> 
                         </div>
-                    </div>           
-                    
-                    
-                    
+                    </div>                              
                 </div>
                 <?php endforeach ;?>
-            </div>
-                    
-      
-            
-          
+            </div>         
         </div>
         <div class="column">
         </div>

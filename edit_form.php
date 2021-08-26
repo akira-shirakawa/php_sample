@@ -2,7 +2,8 @@
 ini_set('display_errors', 1);
 require_once('dbc.php');
 $id = $_GET['id'];
-$content = show($id);
+$dbc = new DB();
+$content = $dbc->show($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,18 +25,21 @@ $content = show($id);
    <div class="columns">
        <div class="column"></div>
        <div class="column">
-        <div class="box">
-        <form action ="edit.php" method="post">
-            <p>タイトル</p>
-            <input type="text" name="title" class="input is-link" value="<?php echo $content['title'] ?>"required>
-            <p>内容</p>
-            <textarea type="text" name="content" rows="10" class="textarea" required><?php echo $content['content'] ?></textarea>
-            <input type="hidden" value="<?php echo $content['id'] ?>" name="id">
-            <input type="submit" value="送信" class="button is-fullwidth is-dark">
-        </form>
-           
-                <a href="index.php">戻る</a>
-        </div>
+        <div class="m-3">
+            <div class="box" id="mt-target">
+                <form action ="edit.php" method="post">
+                    <p>タイトル</p>
+                    <input type="text" name="title" class="input is-link" value="<?php echo $content['title'] ?>"required>
+                    <p>内容</p>
+                    <textarea type="text" name="content" rows="10" class="textarea" required><?php echo $content['content'] ?></textarea>
+                    <input type="hidden" value="<?php echo $content['id'] ?>" name="id">
+                    <input type="submit" value="送信" class="button is-fullwidth is-dark">
+                </form>
+            
+                    <a href="index.php" class="button">戻る</a>
+            </div>
+        </div>   
+        
        </div>
        <div class="column"></div>
    </div>
